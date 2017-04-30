@@ -34,6 +34,6 @@ optional arguments:
                         Available scripts to download:
                         - Mimikatz
                         - InveighRelay
-						- Test [ Will prompt for a URL to fetch text ]
+			- Test [ Will prompt for a URL to fetch text ]
 
 ```
