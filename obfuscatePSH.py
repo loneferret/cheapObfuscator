@@ -201,8 +201,8 @@ def description():
 	desc += ("Author: %s \n" % __author__)
 	desc += ("License: %s \n" % __license__)
 	desc += ("Status: %s \n" % __status__)
-	desc += ("You can experiment and try the script on some of these examples here:")
-	desc += ("http://www.robvanderwoude.com/powershellexamples.php")
+	desc += ("You can experiment and try the script on some of these examples here:\n")
+	desc += ("http://www.robvanderwoude.com/powershellexamples.php\n")
 	desc += printUsage()
 	return desc
 
