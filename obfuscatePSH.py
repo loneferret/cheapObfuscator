@@ -196,7 +196,6 @@ def description():
 	desc += ("To randomly generated string, and removes block comments & empty lines.\n")
 	desc += ("\t* Currently only changes function name.\n\n")
 	desc += ("Author: %s \n" % __author__)
-	desc += ("%s\n" % __copyright__)
 	desc += ("License: %s \n" % __license__)
 	desc += ("Status: %s \n" % __status__)
 	desc += printUsage()
