@@ -1,4 +1,6 @@
 ### Powershell script Obfuscator
+![Screenie](http://url/to/img.png)
+
 ```
 usage: obfuscatePSH.py [-h] --psh PSHSCRIPT
 
