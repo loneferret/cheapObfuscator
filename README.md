@@ -1,5 +1,5 @@
 ### Powershell script Obfuscator
-![Screenie](http://url/to/img.png)
+![Screenie](https://github.com/loneferret/cheapObfuscator/blob/master/screenie.png)
 
 ```
 usage: obfuscatePSH.py [-h] --psh PSHSCRIPT
