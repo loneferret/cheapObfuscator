@@ -1,4 +1,5 @@
-### Powershell script Obfuscator
+## Powershell script Obfuscator
+#### part of the convoluted python series...
 ![Screenie](https://github.com/loneferret/cheapObfuscator/blob/master/screenie.png)
 
 #### Requirements
@@ -34,6 +35,6 @@ optional arguments:
                         Available scripts to download:
                         - Mimikatz
                         - InveighRelay
-						- Test [ Will prompt for a URL to fetch text ]
+			- Test [ Will prompt for a URL to fetch text ]
 
 ```
