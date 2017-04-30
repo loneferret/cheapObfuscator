@@ -1,17 +1,28 @@
 ### Powershell script Obfuscator
 ![Screenie](https://github.com/loneferret/cheapObfuscator/blob/master/screenie.png)
 
+#### Requirements
+```
+requests
+https://pypi.python.org/pypi/requests/2.11.1
+Install : pip install requests==2.11.1
+```
+
 ```
 usage: obfuscatePSH.py [-h] --psh PSHSCRIPT
 
 Simple & Convoluted Powershell obfuscation tool  v0.1.1:
-Grabs a Powershell script from Github, remplaces function names & calls
-To randomly generated string, and removes block comments & empty lines.
+Grabs a Powershell script from the tubes, remplaces function names & calls
+To randomly generated string, and removes block comments & empty lines etc.
 	* Currently only changes function name.
+	* Does variable names but could be better
 
 Author: Steven McElrea (loneferret)
 License: Apache License 2.0
 Status: Prototype
+
+You can experiment and try the script on some of these examples here:
+http://www.robvanderwoude.com/powershellexamples.php
 
 Example Usage:
 	./obfuscatePSH.py --psh InveighRelay
@@ -23,6 +34,6 @@ optional arguments:
                         Available scripts to download:
                         - Mimikatz
                         - InveighRelay
-			- Test [ Will prompt for a URL to fetch text ]
+						- Test [ Will prompt for a URL to fetch text ]
 
 ```

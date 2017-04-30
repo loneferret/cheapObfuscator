@@ -5,6 +5,7 @@ import requests, OpenSSL, string
 
 from argparse import RawTextHelpFormatter
 from classes.bcolours import *
+from classes.banner import *
 
 #
 # Invoke-mimikatz.ps1 obfuscator 
@@ -33,8 +34,9 @@ IGNORE = ['$true','$false','Main','Invoke','$True','$False','$_','$args','$Bytes
 """
 TODO:
 High: 
-- Change variable names: Almost done 
+- Still don't like how I'm chaning variable names 
 - Fine tune the comments regex
+- Get tha Invoke thing out of the way if not needed
 
 """
 
@@ -192,12 +194,15 @@ def printUsage():
 def description():
 	desc = "\n"
 	desc += ("Simple & Convoluted Powershell obfuscation tool  v%s: \n" % __version__)
-	desc += ("Grabs a Powershell script from Github, remplaces function names & calls\n")
+	desc += ("Grabs a Powershell script from the tubes, remplaces function names & calls\n")
 	desc += ("To randomly generated string, and removes block comments & empty lines.\n")
-	desc += ("\t* Currently only changes function name.\n\n")
+	desc += ("\t* Currently only changes function name.\n")
+	desc += ("\t* Does variable names but could be better.\n\n")
 	desc += ("Author: %s \n" % __author__)
 	desc += ("License: %s \n" % __license__)
 	desc += ("Status: %s \n" % __status__)
+	desc += ("You can experiment and try the script on some of these examples here:")
+	desc += ("http://www.robvanderwoude.com/powershellexamples.php")
 	desc += printUsage()
 	return desc
 
@@ -206,13 +211,13 @@ def main():
 
 	parser = argparse.ArgumentParser(description=description(), formatter_class=RawTextHelpFormatter)
 	parser.add_argument('--psh', '-p', dest='pshScript', required=True, help='Available scripts to download:\n- Mimikatz\n- InveighRelay')
-
 	args = parser.parse_args()
+	print banners.smallSlant
 
 	newFunctionName = raw_input("What name do you want the main function to be called [default is random]:") or makeRandom()
-	if(args.pshScript == 'Mimikatz'):
+	if(args.pshScript.lower() == 'mimikatz'):
 		url = MIMIURL
-	elif(args.pshScript == 'InveighRelay'):
+	elif(args.pshScript.lower() == 'inveighrelay'):
 		url = INVEIGHRELAY
 	else:
 		url = raw_input("Enter URL [http://127.0.0.1:8000/test.ps1]: ") or TEST
