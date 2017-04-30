@@ -15,8 +15,8 @@ usage: obfuscatePSH.py [-h] --psh PSHSCRIPT
 Simple & Convoluted Powershell obfuscation tool  v0.1.1:
 Grabs a Powershell script from the tubes, remplaces function names & calls
 To randomly generated string, and removes block comments & empty lines etc.
-	* Currently only changes function name.
-	* Does variable names but could be better
+	* Currently changes function name.
+	* Does variable but could be better
 
 Author: Steven McElrea (loneferret)
 License: Apache License 2.0

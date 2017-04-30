@@ -32,17 +32,18 @@ INVEIGHRELAY = 'https://goo.gl/1507jm'
 TEST = 'http://127.0.0.1:8000/test.ps1'
 MIMI = ''
 
-IGNORE = ['$true','$false','Main','Invoke','$True','$False','$_','$args','$Bytes','Get','$ExeArgs', '$Win32Constants','Win32Constants','Win32Functions','$Win32Functions',
-			'Get-PEBasicInfo','$PEBytes', '$PEHandle','PEHandle','$PELoadedInfo','ExeArgs','$Win32Types','Win32Types','PEInfo','$PEInfo','$StartAddress','StartAddress',
+IGNORE = ['$true','$false','Main','Invoke','$True','$False','$_','$args','$Bytes','Get',
+			'$ExeArgs', '$Win32Constants','Win32Constants','Win32Functions','$Win32Functions',
+			'Get-PEBasicInfo','$PEBytes', '$PEHandle','PEHandle','$PELoadedInfo','ExeArgs',
+			'$Win32Types','Win32Types','PEInfo','$PEInfo','$StartAddress','StartAddress',
 			'Size','$Size','$OriginalImageBase','OriginalImageBase']
-
 
 """
 TODO:
 High: 
 - Still don't like how I'm chaning variable names 
 - Fine tune the comments regex
-- Get tha Invoke thing out of the way if not needed
+- Get that Invoke thing out of the way if not needed
 
 """
 
@@ -202,8 +203,8 @@ def description():
 	desc += ("Simple & Convoluted Powershell obfuscation tool  v%s: \n" % __version__)
 	desc += ("Grabs a Powershell script from the tubes, remplaces function names & calls\n")
 	desc += ("To randomly generated string, and removes block comments & empty lines.\n")
-	desc += ("\t* Currently only changes function name.\n")
-	desc += ("\t* Does variable names but could be better.\n\n")
+	desc += ("\t* Currently changes function name.\n")
+	desc += ("\t* Does variable but could be better.\n\n")
 	desc += ("Author: %s \n" % __author__)
 	desc += ("License: %s \n" % __license__)
 	desc += ("Status: %s \n" % __status__)
