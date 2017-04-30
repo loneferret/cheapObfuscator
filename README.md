@@ -8,7 +8,6 @@ To randomly generated string, and removes block comments & empty lines.
 	* Currently only changes function name.
 
 Author: Steven McElrea (loneferret)
-Copyright 2017, Scalar Decisions Inc.
 License: Apache License 2.0
 Status: Prototype
 
