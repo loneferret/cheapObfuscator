@@ -32,7 +32,7 @@ INVEIGHRELAY = 'https://goo.gl/1507jm'
 TEST = 'http://127.0.0.1:8000/test.ps1'
 MIMI = ''
 
-IGNORE = ['$true','$false','Main','Invoke','$True','$False','$_','$args','$Bytes','Get',
+IGNORE = ['$true','$false','Main','Invoke','$True','$False','$_','$args','$Bytes', #'Get',
 			'$ExeArgs', '$Win32Constants','Win32Constants','Win32Functions','$Win32Functions',
 			'Get-PEBasicInfo','$PEBytes', '$PEHandle','PEHandle','$PELoadedInfo','ExeArgs',
 			'$Win32Types','Win32Types','PEInfo','$PEInfo','$StartAddress','StartAddress',
