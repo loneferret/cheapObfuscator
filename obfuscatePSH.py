@@ -138,7 +138,7 @@ def removeComments(content):
 	# Needs a better regex
 	newlines = []
 	for i in content:
-		if (re.search('^[\s+|\t+]#', i.rstrip())):
+		if (re.search('^(\s*)#', i.rstrip())):
 			continue
 		else:
 			newlines.append(i)
@@ -229,6 +229,7 @@ def main():
 	else:
 		url = raw_input("Enter URL [http://127.0.0.1:8000/test.ps1]: ") or TEST
 
+	print("Fetching from: " + bcolours.GREEN + url + bcolours.ENDC) 
 	MIMI = getTargetPSH(url)
 	MIMI = removeBlockComments(MIMI)
 	MIMI = removeEmptyLines(MIMI)
@@ -245,7 +246,6 @@ def main():
 	MIMI = replaceFunctionCalls(MIMI, 'Invoke-'+args.pshScript, 'Invoke-' + newFunctionName)
 	print("Number of functions renamed: " + bcolours.GREEN + str(len(dictListFunctions)) + bcolours.ENDC)
 	print("Number of variables renamed: " + bcolours.GREEN + str(len(dictListVars)) + bcolours.ENDC)
-	print("Fetching from: " + bcolours.GREEN + url + bcolours.ENDC) 
 	print("New function name: " + bcolours.GREEN + "Invoke-"+newFunctionName+bcolours.ENDC + "\n")
 	writeNewFile(MIMI)
 
