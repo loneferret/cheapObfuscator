@@ -2,7 +2,7 @@
 # Just a bunch of variables much like bcolours.py 
 class banners:
 	# Ref.: banners generated using: http://patorjk.com/software/taag/
-	smallSlant = '''  _____                   __     __         __  ___  ______ __
+	smallSlant = '''ConvolutedPSH Obfuscator\n_____                   __     __         __  ___  ______ __
  / ___/__  ___ _  _____  / /_ __/ /____ ___/ / / _ \/ __/ // /
 / /__/ _ \/ _ \ |/ / _ \/ / // / __/ -_) _  / / ___/\ \/ _  / 
 \___/\___/_//_/___/\___/_/\_,_/\__/\__/\_,_/ /_/  /___/_//_/  
