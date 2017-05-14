@@ -15,7 +15,7 @@ from classes.banner import *
 # Global variables:
 __author__		= "Steven McElrea (loneferret)"
 __license__		= "Apache License 2.0"
-__version__		= "0.1.1"
+__version__		= "0.2.1"
 __status__		= "Prototype"
 
 #Passed URLs:
@@ -32,6 +32,7 @@ INVEIGHRELAY = 'https://goo.gl/1507jm'
 TEST = 'http://127.0.0.1:8000/test.ps1'
 PSHscript = ''
 
+# List of variable names to ignore in hopes not to break stuff
 IGNORE = ['$true','$false','Main','Invoke','$True','$False','$_','$args','$Bytes', #'Get',
 			'$ExeArgs', '$Win32Constants','Win32Constants','Win32Functions','$Win32Functions',
 			'Get-PEBasicInfo','$PEBytes', '$PEHandle','PEHandle','$PELoadedInfo','ExeArgs',
@@ -42,8 +43,8 @@ IGNORE = ['$true','$false','Main','Invoke','$True','$False','$_','$args','$Bytes
 TODO:
 High: 
 - Still don't like how I'm chaning variable names 
-- Fine tune the comments regex
-- Get that Invoke thing out of the way if not needed
+- Fine tune the comments regex - DONE 
+- Get that Invoke thing out of the way if not needed - DONE (kinda)
 
 """
 
@@ -247,9 +248,11 @@ def main():
 		PSHscript = replaceVariableNames(PSHscript, key, dictListVars[key])
 
 	if(invoke):
+		# Cheap way to find if Invoke- is in the file
 		newFunctionName = raw_input("[+] What name do you want the main function to be called [default is random]:") or makeRandom()
 		PSHscript = replaceFunctionCalls(PSHscript, 'Invoke-'+args.pshScript, 'Invoke-' + newFunctionName)
 		print("[-] New function name: " + bcolours.GREEN + "Invoke-"+newFunctionName+bcolours.ENDC)
+
 	print("[-] Number of functions renamed: " + bcolours.GREEN + str(len(dictListFunctions)) + bcolours.ENDC)
 	print("[-] Number of variables renamed: " + bcolours.GREEN + str(len(dictListVars)) + bcolours.ENDC)
 

@@ -12,7 +12,7 @@ Install : pip install requests==2.11.1
 ```
 usage: obfuscatePSH.py [-h] --psh PSHSCRIPT
 
-Simple & Convoluted Powershell obfuscation tool  v0.1.1:
+Simple & Convoluted Powershell obfuscation tool  v0.2.1:
 Grabs a Powershell script from the tubes, remplaces function names & calls
 To randomly generated string, and removes block comments & empty lines etc.
 	* Currently changes function name.
