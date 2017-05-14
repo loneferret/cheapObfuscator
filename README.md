@@ -1,6 +1,6 @@
 ## Powershell script Obfuscator
 #### part of the convoluted python series...
-![Screenie](https://github.com/loneferret/cheapObfuscator/blob/master/screenie.png)
+![Screenie](https://github.com/loneferret/cheapObfuscator/blob/master/screenie2.png)
 
 #### Requirements
 ```
