@@ -30,7 +30,7 @@ __status__		= "Prototype"
 MIMIURL = 'https://goo.gl/s18PdR'
 INVEIGHRELAY = 'https://goo.gl/1507jm'
 TEST = 'http://127.0.0.1:8000/test.ps1'
-MIMI = ''
+PSHscript = ''
 
 IGNORE = ['$true','$false','Main','Invoke','$True','$False','$_','$args','$Bytes', #'Get',
 			'$ExeArgs', '$Win32Constants','Win32Constants','Win32Functions','$Win32Functions',
@@ -187,9 +187,12 @@ def getVariablesNames(content):
 
 def getTargetPSH(url):
 	# Download Mimikatz for treatement
+	invoke = False
 	orgPSH = requests.get(url, stream=True)
 	orgPSH.raw.decode_content = True
-	return orgPSH.content
+	if("Invoke-" in orgPSH.content):
+		invoke = True
+	return orgPSH.content,invoke
 
 def printUsage():
 	usage = '\n'
@@ -221,33 +224,36 @@ def main():
 	args = parser.parse_args()
 	print banners.smallSlant
 
-	newFunctionName = raw_input("What name do you want the main function to be called [default is random]:") or makeRandom()
+
 	if(args.pshScript == 'Mimikatz'):
 		url = MIMIURL
 	elif(args.pshScript == 'InveighRelay'):
 		url = INVEIGHRELAY
 	else:
-		url = raw_input("Enter URL [http://127.0.0.1:8000/test.ps1]: ") or TEST
+		url = raw_input("[+] Enter URL [http://127.0.0.1:8000/test.ps1]: ") or TEST
 
-	print("Fetching from: " + bcolours.GREEN + url + bcolours.ENDC) 
-	MIMI = getTargetPSH(url)
-	MIMI = removeBlockComments(MIMI)
-	MIMI = removeEmptyLines(MIMI)
-	MIMI = removeComments(MIMI)
+	print("[-] Fetching from: " + bcolours.GREEN + url + bcolours.ENDC) 
+	PSHscript, invoke = getTargetPSH(url)
+	PSHscript = removeBlockComments(PSHscript)
+	PSHscript = removeEmptyLines(PSHscript)
+	PSHscript = removeComments(PSHscript)
 	
-	MIMI, dictListFunctions = getFunctionNames(MIMI)
+	PSHscript, dictListFunctions = getFunctionNames(PSHscript)
 	for key in dictListFunctions:
-		MIMI = replaceFunctionCalls(MIMI, key, dictListFunctions[key])
+		PSHscript = replaceFunctionCalls(PSHscript, key, dictListFunctions[key])
 	
-	dictListVars = getVariablesNames(MIMI)
+	dictListVars = getVariablesNames(PSHscript)
 	for key in dictListVars:
-		MIMI = replaceVariableNames(MIMI, key, dictListVars[key])
+		PSHscript = replaceVariableNames(PSHscript, key, dictListVars[key])
 
-	MIMI = replaceFunctionCalls(MIMI, 'Invoke-'+args.pshScript, 'Invoke-' + newFunctionName)
-	print("Number of functions renamed: " + bcolours.GREEN + str(len(dictListFunctions)) + bcolours.ENDC)
-	print("Number of variables renamed: " + bcolours.GREEN + str(len(dictListVars)) + bcolours.ENDC)
-	print("New function name: " + bcolours.GREEN + "Invoke-"+newFunctionName+bcolours.ENDC + "\n")
-	writeNewFile(MIMI)
+	if(invoke):
+		newFunctionName = raw_input("[+] What name do you want the main function to be called [default is random]:") or makeRandom()
+		PSHscript = replaceFunctionCalls(PSHscript, 'Invoke-'+args.pshScript, 'Invoke-' + newFunctionName)
+		print("[-] New function name: " + bcolours.GREEN + "Invoke-"+newFunctionName+bcolours.ENDC)
+	print("[-] Number of functions renamed: " + bcolours.GREEN + str(len(dictListFunctions)) + bcolours.ENDC)
+	print("[-] Number of variables renamed: " + bcolours.GREEN + str(len(dictListVars)) + bcolours.ENDC)
+
+	writeNewFile(PSHscript)
 
 
 
